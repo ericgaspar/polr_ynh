@@ -128,12 +128,11 @@ ynh_replace_string --match_string="__DOMAIN__" --replace_string="$domain" --targ
 
 # Setup application config
 #cd $final_path && php$phpversion artisan key:generate -n --force --env
-cd $final_path && php$phpversion artisan migrate --force
-cd $final_path && php$phpversion artisan geoip:update
+#cd $final_path && php$phpversion artisan migrate --force
+#cd $final_path && php$phpversion artisan geoip:update
 #cd $final_path && php$phpversion artisan config:clear -n
 #cd $final_path && php$phpversion artisan config:cache -n
 
-ynh_script_progression --message="Set admin..."
 
 # Set the user chosen at installation as administrator
 #ynh_mysql_connect_as --user="$db_user" --password="$db_pwd" --database="$db_name" <<< "UPDATE ${db_name}_user_table SET username = '$admin' WHERE id = 1;"
