@@ -19,7 +19,7 @@ ynh_abort_if_errors
 #=================================================
 # LOAD SETTINGS
 #=================================================
-ynh_print_info --message="Backing up Lychee..."
+ynh_print_info --message="Backing up Polr..."
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -39,7 +39,7 @@ ynh_backup --src_path="$final_path"
 # BACKUP MEDIA FOLDER
 #=================================================
 
-ynh_backup --src_path="$public_path" --is_big
+ynh_backup --src_path="$public_path"
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION
@@ -66,4 +66,4 @@ ynh_mysql_dump_db --database="$db_name" > db.sql
 # END OF SCRIPT
 #=================================================
 
-ynh_print_info --message="Backup script completed for Lychee. (YunoHost will then actually copy those files to the archive)."
+ynh_print_info --message="Backup script completed for Polr. (YunoHost will then actually copy those files to the archive)."

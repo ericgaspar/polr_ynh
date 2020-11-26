@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/LycheeOrg/Lychee/releases/download/v4.0.8/Lychee.zip
-SOURCE_SUM=107aea88ea20c6cff7e3279354819ecfeffef780197d2d86229d088082cfbf5d
+SOURCE_URL=https://github.com/cydrobolt/polr/archive/2.2.0.zip
+SOURCE_SUM=fa4e76fdde2ca0a75865bb2e5b8aa4657238953a0063eff1476e4046c24818c1
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true

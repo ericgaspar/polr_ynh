@@ -1,25 +1,25 @@
-# Lychee pour YunoHost
+# Polr pour YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/lychee.svg)](https://dash.yunohost.org/appci/app/lychee) ![](https://ci-apps.yunohost.org/ci/badges/lychee.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/lychee.maintain.svg)  
-[![Installer Lychee avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=lychee)
+[![Integration level](https://dash.yunohost.org/integration/polr.svg)](https://dash.yunohost.org/appci/app/polr) ![](https://ci-apps.yunohost.org/ci/badges/polr.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/polr.maintain.svg)  
+[![Installer Polr avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=polr)
 
 *[Read this readme in english.](./README.md)* 
 
-> *Ce package vous permet d'installer Lychee rapidement et simplement sur un serveur YunoHost.  
+> *Ce package vous permet d'installer Polr rapidement et simplement sur un serveur YunoHost.  
 Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install) pour apprendre comment l'installer.*
 
 ## Vue d'ensemble
-Lychee est un outil de gestion de photos gratuit, qui fonctionne sur votre serveur ou votre espace Web. L'installation est une question de secondes. Téléchargez, gérez et partagez des photos comme à partir d'une application native. Lychee est livré avec tout ce dont vous avez besoin et toutes vos photos sont stockées en toute sécurité.
 
-**Version incluse :** 4.0.8
+
+**Version incluse :** 2.2.0
 
 ## Captures d'écran
 
-![](https://camo.githubusercontent.com/b9010f02c634219795950e034f511f4cf4af5c60/68747470733a2f2f732e656c6563746572696f75732e636f6d2f696d616765732f6c79636865652f312e6a706567)
+![]()
 
 ## Démo
 
-* [Démo officielle](https://lycheeorg.github.io/demo/)
+* [Démo officielle](https://demo.polr.me/)
 
 ## Configuration
 
@@ -27,8 +27,8 @@ Comment configurer cette application : via le panneau d'administration.
 
 ## Documentation
 
- * Documentation officielle : https://lycheeorg.github.io/docs/
- * Documentation YunoHost : https://yunohost.org/#/app_lychee_fr
+ * Documentation officielle : https://docs.polrproject.org/en/latest/
+ * Documentation YunoHost : https://yunohost.org/#/app_polr_fr
 
 ## Caractéristiques spécifiques YunoHost
 
@@ -39,8 +39,8 @@ Comment configurer cette application : via le panneau d'administration.
 
 #### Architectures supportées
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/lychee%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/lychee/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/lychee%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/lychee/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/polr%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/polr/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/polr%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/polr/)
 
 ## Limitations
 
@@ -52,20 +52,20 @@ Comment configurer cette application : via le panneau d'administration.
 
 ## Liens
 
- * Signaler un bug : https://github.com/YunoHost-Apps/lychee_ynh/issues
- * Site de l'application : https://lycheeorg.github.io/
- * Dépôt de l'application principale : https://github.com/LycheeOrg/Lychee
+ * Signaler un bug : https://github.com/YunoHost-Apps/polr_ynh/issues
+ * Site de l'application : https://polrproject.org/
+ * Dépôt de l'application principale : https://github.com/cydrobolt/polr
  * Site web YunoHost : https://yunohost.org/
 
 ---
 
 ## Informations pour les développeurs
 
-Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/lychee_ynh/tree/testing).
+Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/polr_ynh/tree/testing).
 
 Pour essayer la branche testing, procédez comme suit.
 ```
-sudo yunohost app install https://github.com/YunoHost-Apps/lychee_ynh/tree/testing --debug
+sudo yunohost app install https://github.com/YunoHost-Apps/polr_ynh/tree/testing --debug
 or
-sudo yunohost app upgrade lychee -u https://github.com/YunoHost-Apps/lychee_ynh/tree/testing --debug
+sudo yunohost app upgrade polr -u https://github.com/YunoHost-Apps/polr_ynh/tree/testing --debug
 ```

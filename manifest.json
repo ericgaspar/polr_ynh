@@ -1,14 +1,14 @@
 {
-    "name": "Lychee",
-    "id": "lychee",
+    "name": "Polr",
+    "id": "polr",
     "packaging_format": 1,
     "description": {
-        "en": "Photo-management-system to manage and share photos.",
-        "fr": "Système de gestion de photos pour gérer et partager des photos."
+        "en": "A modern, powerful, and robust URL shortener.",
+        "fr": "."
     },
-    "version": "4.0.8~ynh1",
-    "url": "https://lycheeorg.github.io/",
-    "license": "MIT",
+    "version": "2.1.0~ynh1",
+    "url": "https://polrproject.org/",
+    "license": "    GPL-2.0-only",
     "maintainer": {
         "name": "eric_G",
         "email": ""
@@ -28,8 +28,8 @@
                 "name": "domain",
 		"type": "domain",
                 "ask": {
-                    "en": "Choose a domain name for Lychee",
-                    "fr": "Choisissez un nom de domaine pour Lychee"
+                    "en": "Choose a domain name for Polr",
+                    "fr": "Choisissez un nom de domaine pour Polr"
                 },
                 "example": "example.com"
             },
@@ -37,11 +37,19 @@
             "name": "path",
             "type": "path",
                 "ask": {
-                    "en": "Choose a path for Lychee",
-                    "fr": "Choisissez un chemin pour Lychee"
+                    "en": "Choose a path for Polr",
+                    "fr": "Choisissez un chemin pour Polr"
                 },
-                "example": "/lychee",
-                "default": "/lychee"
+                "example": "/polr",
+                "default": "/polr"
+            },
+            {
+            "name": "admin",
+            "type": "user",
+                "ask": {
+                    "en": "Choose the Mantis administrator",
+                    "fr": "Choisissez l’administrateur de Mantis"
+                }
             },
             {
             "name": "is_public",

@@ -22,6 +22,7 @@ ynh_abort_if_errors
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 is_public=$YNH_APP_ARG_IS_PUBLIC
+admin=$YNH_APP_ARG_ADMIN
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -47,6 +48,7 @@ ynh_script_progression --message="Storing installation settings..." --weight=1
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=is_public --value=$is_public
+ynh_app_setting_set --app=$app --key=admin --value=$admin
 
 #=================================================
 # INSTALL DEPENDENCIES
@@ -78,12 +80,12 @@ ynh_setup_source --dest_dir=$final_path
 # CREATE DIRECTORIES
 #=================================================
 
-ynh_app_setting_set --app=$app --key=public_path --value=$public_path
-mkdir -p ${public_path}/uploads
-mkdir -p ${public_path}/uploads/{big,import,medium,raw,small,thumb}
+# ynh_app_setting_set --app=$app --key=public_path --value=$public_path
+# mkdir -p ${public_path}/uploads
+# mkdir -p ${public_path}/uploads/{big,import,medium,raw,small,thumb}
 
-# Create a dedicated NGINX config
-ynh_add_nginx_config "public_path"
+# # Create a dedicated NGINX config
+# ynh_add_nginx_config "public_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -128,17 +130,21 @@ cp ../conf/.env.example $final_path/.env
 
 ynh_replace_string --match_string="__DB_NAME__" --replace_string="$db_name" --target_file="$final_path/.env"
 ynh_replace_string --match_string="__DB_PASS__" --replace_string="$db_pwd" --target_file="$final_path/.env"
-ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="$final_path/.env"
-ynh_replace_string --match_string="__FINALPATH__" --replace_string="$final_path" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__DOMAIN__" --replace_string="$domain" --target_file="$final_path/.env"
+#ynh_replace_string --match_string="__FINALPATH__" --replace_string="$final_path" --target_file="$final_path/.env"
 
 # Setup application config
-cd $final_path && php$phpversion artisan key:generate -n --force --env
-cd $final_path && php$phpversion artisan migrate -n --force
-cd $final_path && php$phpversion artisan config:clear -n
-cd $final_path && php$phpversion artisan config:cache -n
+#cd $final_path && php$phpversion artisan key:generate -n --force --env
+cd $final_path && php$phpversion artisan migrate --force
+cd $final_path && php$phpversionphp artisan geoip:update
+#cd $final_path && php$phpversion artisan config:clear -n
+#cd $final_path && php$phpversion artisan config:cache -n
 
 # Setup custom user.css file
 cp ../conf/user.css.example $final_path/public/dist/user.css
+
+# Set the user chosen at installation as administrator
+ynh_mysql_connect_as --user="$db_user" --password="$db_pwd" --database="$db_name" <<< "UPDATE ${db_name}_user_table SET username = '$admin' WHERE id = 1;"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
@@ -153,8 +159,7 @@ ynh_store_file_checksum "$final_path/.env"
 
 # Set permissions to app files
 chown -R $app: $final_path
-chown -R $app: ${public_path}
-chmod -R 755 ${public_path}
+chmod -R 755 $final_path
 
 #=================================================
 # SETUP SSOWAT
@@ -164,8 +169,6 @@ ynh_script_progression --message="Configuring SSOwat..." --weight=1
 # Make app public if necessary or protect it
 if [ $is_public -eq 1 ]
 then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
 	ynh_permission_update --permission "main" --add "visitors"
 fi
 

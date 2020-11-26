@@ -20,9 +20,10 @@ domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-public_path=$(ynh_app_setting_get --app=$app --key=public_path)
+#public_path=$(ynh_app_setting_get --app=$app --key=public_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
+admin=$(ynh_app_setting_get --app=$app --key=admin)
 
 #=================================================
 # CHECK VERSION
@@ -70,7 +71,7 @@ fi
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
 #=================================================
-ynh_script_progression --message="Backing up Lychee before upgrading..." --weight=3
+ynh_script_progression --message="Backing up Polr before upgrading..." --weight=3
 
 # Backup the current version of the app
 ynh_backup_before_upgrade
@@ -150,8 +151,7 @@ ynh_store_file_checksum --file="$final_path/.env"
 
 # Set permissions on app files
 chown -R $app: $final_path
-chown -R $app: $public_path
-chmod -R 750 $public_path
+chmod -R 755 $final_path
 
 #=================================================
 # RELOAD NGINX
@@ -164,4 +164,4 @@ ynh_systemd_action --service_name=nginx --action=reload
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of Lychee completed" --last
+ynh_script_progression --message="Upgrade of Polr completed" --last
