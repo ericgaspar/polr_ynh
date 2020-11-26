@@ -133,11 +133,10 @@ cd $final_path && php$phpversion artisan geoip:update
 #cd $final_path && php$phpversion artisan config:clear -n
 #cd $final_path && php$phpversion artisan config:cache -n
 
-# Setup custom user.css file
-cp ../conf/user.css.example $final_path/public/dist/user.css
+ynh_script_progression --message="Set admin..."
 
 # Set the user chosen at installation as administrator
-ynh_mysql_connect_as --user="$db_user" --password="$db_pwd" --database="$db_name" <<< "UPDATE ${db_name}_user_table SET username = '$admin' WHERE id = 1;"
+#ynh_mysql_connect_as --user="$db_user" --password="$db_pwd" --database="$db_name" <<< "UPDATE ${db_name}_user_table SET username = '$admin' WHERE id = 1;"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
